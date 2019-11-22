@@ -86,8 +86,10 @@ export function run(
     try {
       // https://github.com/codeclimate/test-reporter/issues/259#issuecomment-374280649
 
-      const commands = ['format-coverage', coverageFile, '--input-type', 'jacoco'];
+      let commands = ['format-coverage', coverageFile, '--input-type', 'jacoco'];
       if (codeClimateDebug === 'true') commands.push('--debug');
+      await exec(executable, commands, execOpts);
+      commands = ['upload-coverage'];
       await exec(executable, commands, execOpts);
       debug('✅ CC Reporter format-coverage checkin completed!');
       return resolve();
