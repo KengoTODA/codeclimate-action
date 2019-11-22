@@ -11,6 +11,9 @@ inputs:
   debug:
     description: 'Enable debugging logs for the Code Climate test reporter'
     default: 'false'
+  coverageFile:
+    description: 'The path to JaCoCo coverage XML file'
+    default: 'build/reports/jacoco/test/jacocoTestReport.xml'
 runs:
   using: 'node12'
   main: 'lib/main.js'
